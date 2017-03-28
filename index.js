@@ -3,10 +3,10 @@
 
 const prompt = require('prompt');
 const fs = require('fs');
-const formatHex = require(__dirname + 'formatHex');
+const formatHex = require(__dirname + '/formatHex.js');
 
 // Load template and scan for placeholders
-const template = fs.readFileSync(__dirname + 'template.css', { encoding: 'utf8' });
+const template = fs.readFileSync(__dirname + '/template.css', { encoding: 'utf8' });
 let newFile = template;
 const matches = template.match(/{{.*}}/g);
 
