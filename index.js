@@ -41,9 +41,31 @@ matches.forEach( function(placeholder){
     placeholders.push(toAdd);
 });
 
-// Request information from user
+// Prep prompt schema (see https://www.npmjs.com/package/prompt)
 prompt.start();
-prompt.get( Array.from(placeholders, x => x.name ), function(err, results){
+let schema = {
+    properties: {}
+};
+
+for( let placeholder in placeholders ){
+    let val = placeholders[placeholder];
+
+    // Prep data to save to schema
+    let properties = {};
+
+    // Does this placeholder have a default value set? If not, mark as required
+    if( ! val.hasOwnProperty('default') ){
+        properties.required = true;
+        properties.description = val.name + ' (required)';
+        properties.message = val.name + ' is required!';
+    } else {
+        properties.description = val.name + ' (default: ' + val.default + ')';
+    }
+
+    schema.properties[val.name] = properties;
+}
+
+prompt.get( schema, function(err, results){
     for( let placeholder in results ){
         let currentValue = formatHex(results[placeholder]);
         console.log(currentValue);
