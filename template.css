@@ -107,12 +107,12 @@
     }
     .login #nav a {
     	text-decoration: none;
-    	color: #444545 !important;
+    	color: {{ link-color default:font-color }} !important;
     	padding: auto 1px auto 1px;
     	text-shadow: none;
     }
     .login #nav a:hover {
-    	color: #DB8F39 !important;
+    	color: {{ link-hover-color default:font-color }} !important;
     	font-weight: bold;
     	text-shadow: none;
     }

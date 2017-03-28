@@ -20,6 +20,8 @@ Additional optional values include:
 * button-hover-background (default: background)
 * button-hover-font-color (default: font-color)
 * check-color (default: font-color)
+* link-color (default: font-color)
+* link-hover-color (default: font-color)
 
 ## Changing the Template
 Everything that happens in the script is based on the `template.css` file. `funkhaus-format-login` scans `template.css` for [Mustache-style](https://mustache.github.io/) placeholders, then prompts the user for values to fill those placeholders.
