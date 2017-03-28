@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "fh-format-login": "./index.js"
+    "funkhaus-format-login": "./index.js"
   },
   "keywords": [],
   "author": "",
