@@ -49,6 +49,9 @@
  * Login Form
  */
     .login form {
+        background-color: {{ background }};
+        color: {{ font-color }};
+
         -webkit-box-shadow: none;
         box-shadow: none;
     }
