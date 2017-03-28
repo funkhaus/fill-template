@@ -6,8 +6,9 @@ const fs = require('fs');
 const formatHex = require('./formatHex');
 
 // Load template and scan for placeholders
-const file = fs.readFileSync('./template.css', { encoding: 'utf8' });
-const matches = file.match(/{{.*}}/g);
+const template = fs.readFileSync('./template.css', { encoding: 'utf8' });
+let newFile = template;
+const matches = template.match(/{{.*}}/g);
 
 // Save required and optional placeholders
 let placeholders = [];
@@ -46,7 +47,6 @@ prompt.start();
 let schema = {
     properties: {}
 };
-
 for( let placeholder in placeholders ){
     let val = placeholders[placeholder];
 
@@ -66,8 +66,17 @@ for( let placeholder in placeholders ){
 }
 
 prompt.get( schema, function(err, results){
+
     for( let placeholder in results ){
-        let currentValue = formatHex(results[placeholder]);
-        console.log(currentValue);
+        let object = placeholders.filter(x => x.name == placeholder).pop();
+        let val = formatHex( results[placeholder] );
+        if( val === null || !val.length ){
+            val = formatHex( results[object.default] );
+        }
+        newFile = newFile.replace( new RegExp(object.placeholder, 'g'), val );
     }
+
+    // Write the file!
+    fs.writeFileSync('login.css', newFile);
+
 });

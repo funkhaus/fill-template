@@ -88,11 +88,11 @@
     	border: none;
     	text-shadow: none;
     	box-shadow: 0 0 0 0;
-        color: {{ button-font-color default:background }}
+        color: {{ button-font-color default:background }};
     }
     #wp-submit:hover {
         background: {{ button-hover-background default:background }};
-        color: {{ button-hover-font-color default:font-color }}
+        color: {{ button-hover-font-color default:font-color }};
     }
 
 
