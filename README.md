@@ -21,6 +21,44 @@ Additional optional values include:
 * button-hover-font-color (default: font-color)
 * check-color (default: font-color)
 
+## Changing the Template
+Everything that happens in the script is based on the `template.css` file. `funkhaus-format-login` scans `template.css` for [Mustache-style](https://mustache.github.io/) placeholders, then prompts the user for values to fill those placeholders.
+
+For example, if `template.css` just contained this:
+
+```css
+html {
+    color: {{ background-color }};
+}
+```
+
+then running `format-login` would ask you for the `background-color`:
+
+```
+prompt: background-color (required): [your hex value here]
+```
+
+and would result in this CSS file:
+
+```css
+html {
+    color: [your hex value here];
+}
+```
+
+You can also specify a default value for a placeholder:
+
+```css
+html {
+    color: {{ background }};
+}
+body {
+    color: {{ body-background default:background }};
+}
+```
+
+Name the placeholder as usual, then indicate a default value to look for with `default:[default-value-name]`. This falls back on the default value if the user doesn't specify the value in the prompt.
+
 -------
 
 Version 1.0

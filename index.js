@@ -57,7 +57,8 @@ for( let placeholder in placeholders ){
     if( ! val.hasOwnProperty('default') ){
         properties.required = true;
         properties.description = val.name + ' (required)';
-        properties.message = val.name + ' is required!';
+        properties.message = val.name + ' is required and must be a hex value!';
+        properties.pattern = /^#?([\dabcdef]{3}$|[\dabcdef]{6}$)/;
     } else {
         properties.description = val.name + ' (default: ' + val.default + ')';
     }
@@ -78,5 +79,6 @@ prompt.get( schema, function(err, results){
 
     // Write the file!
     fs.writeFileSync('login.css', newFile);
+    console.log('File created at login.css');
 
 });
