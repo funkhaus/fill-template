@@ -18,7 +18,7 @@ program
     .parse(process.argv);
 
 // Load template and scan for placeholders
-const template = fs.readFileSync(program.template, { encoding: program.encoding });
+let template = fs.readFileSync(program.template, { encoding: program.encoding });
 
 // Save required and optional placeholders
 const matches = template.match(/{{.*}}/g);
@@ -27,6 +27,10 @@ let placeholders = getPlaceholders(matches);
 // Prep prompt schema (see https://www.npmjs.com/package/prompt)
 prompt.start();
 let schema = setupSchema(placeholders);
+
+// Remove anything that's not the placeholder name
+// (http://stackoverflow.com/questions/3954927/js-regex-how-to-replace-the-captured-groups-only)
+template = template.replace( /({{\s+\S*\s*?)(.*?)(\s}})/g, '$1$3' );
 
 // Run prompt
 runPrompt(prompt, schema, placeholders, template)

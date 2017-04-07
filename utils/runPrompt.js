@@ -7,12 +7,18 @@ module.exports = (prompt, schema, placeholders, template) => {
         prompt.get( schema, function(err, results){
 
             for( let placeholder in results ){
-                let object = placeholders.filter(x => x.name == placeholder).pop();
-                let val = formatHex( results[placeholder] );
-                if( val === null || !val.length ){
-                    val = formatHex( results[object.default] );
+                let placeholderObject = placeholders.filter(x => x.name == placeholder).pop();
+
+                let val = results[placeholder];
+
+                if( placeholderObject.type == 'hex' ){
+                    val = formatHex( results[placeholder] );
+                    if( val === null || !val.length ){
+                        val = formatHex( results[placeholderObject.default] );
+                    }
                 }
-                template = template.replace( new RegExp(object.placeholder, 'g'), val );
+
+                template = template.replace( new RegExp(placeholderObject.placeholder, 'g'), val );
             }
 
             resolve(template);
