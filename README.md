@@ -7,26 +7,15 @@ Quickly generate WP login CSS files for Funkhaus projects.
 
 That's it!
 
-## How It Works
-The program requires the following as hex values (`#xxxxxx`, `xxxxxx`, `#xxx`, or `xxx` accepted)
-* background
-* font-color
+## Options
 
-Additional optional values include:
-* label-font-color (default: font-color)
-* input-background (default: background)
-* button-background (default: font-color)
-* button-font-color (default: background)
-* button-hover-background (default: background)
-* button-hover-font-color (default: font-color)
-* check-color (default: font-color)
-* link-color (default: font-color)
-* link-hover-color (default: font-color)
-* message-background (default: background)
-* message-font-color (default: font-color)
+* `-t filename.txt` or `--template example.txt`
+    * File to use as a template (default templates/template.css)
+* `-e encoding` or `--template encoding`
+    * Encoding of the template (default utf8)
 
 ## Changing the Template
-Everything that happens in the script is based on the `template.css` file. `funkhaus-format-login` scans `template.css` for [Mustache-style](https://mustache.github.io/) placeholders, then prompts the user for values to fill those placeholders.
+Everything that happens in the script is based on the template file. `funkhaus-format-login` scans the template (default `templates/template.css`) for [Mustache-style](https://mustache.github.io/) placeholders, then prompts the user for values to fill those placeholders.
 
 For example, if `template.css` just contained this:
 

@@ -8,8 +8,16 @@ const getPlaceholders = require('./utils/getPlaceholders.js');
 const setupSchema = require('./utils/setupSchema.js');
 const runPrompt = require('./utils/runPrompt.js');
 
+const program = require('commander');
+
+program
+    .version('1.1.0')
+    .option('-t, --template [file]', 'Path to the desired template file', './templates/template.css')
+    .option('-e, --encoding [encoding]', 'Template file encoding [utf8]', 'utf8')
+    .parse(process.argv);
+
 // Load template and scan for placeholders
-const template = fs.readFileSync(__dirname + '/template.css', { encoding: 'utf8' });
+const template = fs.readFileSync(program.template, { encoding: program.encoding });
 
 // Save required and optional placeholders
 const matches = template.match(/{{.*}}/g);
