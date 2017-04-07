@@ -11,7 +11,7 @@ That's it!
 
 * `-t filename.txt` or `--template example.txt`
     * File to use as a template (default templates/template.css)
-* `-e encoding` or `--template encoding`
+* `-e encoding` or `--encoding encoding`
     * Encoding of the template (default utf8)
 
 ## Changing the Template
