@@ -14,6 +14,7 @@ program
     .version('1.1.0')
     .option('-t, --template [file]', 'Path to the desired template file', './templates/template.css')
     .option('-e, --encoding [encoding]', 'Template file encoding [utf8]', 'utf8')
+    .option('-o, --output [output]', 'Name of output file or output root directory', 'login.css')
     .parse(process.argv);
 
 // Load template and scan for placeholders
@@ -31,6 +32,6 @@ let schema = setupSchema(placeholders);
 runPrompt(prompt, schema, placeholders, template)
     .then(newFile => {
         // Write the file!
-        fs.writeFileSync('login.css', newFile);
+        fs.writeFileSync(program.output, newFile);
         console.log('File created at login.css');
     });
