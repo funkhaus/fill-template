@@ -10,9 +10,11 @@ That's it!
 ## Options
 
 * `-t filename.txt` or `--template example.txt`
-    * File to use as a template (default templates/template.css)
+    * File to use as a template (default `templates/template.css`)
 * `-e encoding` or `--encoding encoding`
     * Encoding of the template (default utf8)
+* `-o example.txt` or `--output example.txt`
+    * Name of output file (default `login.css`)
 
 ## Changing the Template
 Everything that happens in the script is based on the template file. `funkhaus-format-login` scans the template (default `templates/template.css`) for [Mustache-style](https://mustache.github.io/) placeholders, then prompts the user for values to fill those placeholders.
