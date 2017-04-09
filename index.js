@@ -19,9 +19,14 @@ program
 // Load template and scan for placeholders
 let template = fs.readFileSync(program.template, { encoding: program.encoding });
 
+// "Template" contains "placeholders", Mustache-style elements that will be parsed
+// into instances of the class Placeholder
+
 // Save required and optional placeholders
-const matches = template.match(/{{.*}}/g);
-let placeholders = getPlaceholders(matches);
+let placeholders = getPlaceholders(template);
+
+console.log(placeholders)
+return
 
 // Prep prompt schema (see https://www.npmjs.com/package/prompt)
 prompt.start();

@@ -11,7 +11,7 @@ module.exports = placeholders => {
         let properties = {};
 
         // Does this placeholder have a default value set? If not, mark as required
-        if( typeof val.defaultValue === 'undefined' ){
+        if( ! val.hasDefault() ){
             properties.required = true;
             properties.description = val.name + ' (required)';
         } else {

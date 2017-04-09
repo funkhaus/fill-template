@@ -1,10 +1,17 @@
 class Placeholder {
 
-    constructor( name, template, defaultValue = undefined, type = 'string' ){
-        this.name = name
-        this.template = template
+    constructor( slug, defaultValue = undefined, type = 'string' ){
+        this.slug = slug
         this.defaultValue = defaultValue
         this.type = type
+    }
+
+    hasDefault(){
+        return typeof this.defaultValue === 'undefined'
+    }
+
+    getTemplate(){
+        return '{{ ' + this.slug + ' }}'
     }
 
 }

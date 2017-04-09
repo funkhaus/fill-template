@@ -6,8 +6,6 @@ module.exports = (prompt, schema, placeholders, template) => {
     return new Promise((resolve, reject) => {
         prompt.get( schema, function(err, results){
 
-            console.log(results)
-
             for( let placeholder in results ){
                 let placeholderObject = placeholders.filter(x => x.name == placeholder.name).pop();
 
