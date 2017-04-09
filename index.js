@@ -3,7 +3,6 @@
 
 const prompt = require('prompt');
 const fs = require('fs');
-const formatHex = require('./utils/formatHex.js');
 const getPlaceholders = require('./utils/getPlaceholders.js');
 const setupSchema = require('./utils/setupSchema.js');
 const runPrompt = require('./utils/runPrompt.js');

@@ -1,3 +1,5 @@
+let Placeholder = require( './placeholder' )
+
 module.exports = matches => {
 
     let placeholders = [];
@@ -13,33 +15,28 @@ module.exports = matches => {
             return;
         }
 
-        // Create an object to hold placeholder information
-        let toAdd = {
-            name: name,
-            placeholder: placeholder.replace( /({{\s+\S*\s*?)(.*?)(\s}})/g, '$1$3' ),
-            value: ''
-        };
+        let template = placeholder.replace( /({{\s+\S*\s*?)(.*?)(\s}})/g, '$1$3' )
 
         // Does this match have a default specified? If so, add to object
         let defaultRegex = /default:(\S*)/g;
         let defaultCheck = placeholder.match(defaultRegex);
+        let defaultValue = undefined
         if( defaultCheck != null ){
             let specifiedDefault = defaultRegex.exec(defaultCheck)[1];
-            toAdd['default'] = specifiedDefault
+            defaultValue = specifiedDefault
         }
 
         // Does this match have a type specified? If so, add
         let typeRegex = /type:(\S*)/g;
         let typeCheck = placeholder.match(typeRegex);
+        let type = 'string'
         if( typeCheck != null ){
             let specifiedType = typeRegex.exec(typeCheck)[1];
-            toAdd['type'] = specifiedType;
-        } else {
-            toAdd['type'] = 'string';
+            type = specifiedType;
         }
 
         // Add to placeholder list
-        placeholders.push(toAdd);
+        placeholders.push( new Placeholder(name, template, defaultValue, type) );
     });
 
     return placeholders;

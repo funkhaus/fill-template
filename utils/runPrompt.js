@@ -6,8 +6,10 @@ module.exports = (prompt, schema, placeholders, template) => {
     return new Promise((resolve, reject) => {
         prompt.get( schema, function(err, results){
 
+            console.log(results)
+
             for( let placeholder in results ){
-                let placeholderObject = placeholders.filter(x => x.name == placeholder).pop();
+                let placeholderObject = placeholders.filter(x => x.name == placeholder.name).pop();
 
                 let val = results[placeholder];
 
@@ -18,7 +20,7 @@ module.exports = (prompt, schema, placeholders, template) => {
                     }
                 }
 
-                template = template.replace( new RegExp(placeholderObject.placeholder, 'g'), val );
+                template = template.replace( new RegExp(placeholderObject.placeholder.template, 'g'), val );
             }
 
             resolve(template);
