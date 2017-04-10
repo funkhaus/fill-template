@@ -3,15 +3,16 @@ let Placeholder = require( './placeholder' )
 module.exports = template => {
 
     // Build list of matches from Mustache elements in template
-    const matches = template.match(/{{.*}}/g);
+    const matches = template.match(/{{.*?}}/g);
 
     let placeholders = [];
 
     matches.forEach( function(mustache){
 
         // Save the slug of the element
-        let slugRegex = /{{\s?(\S*)\s?.*}}/g;
+        let slugRegex = /{{\s?(\S*)\s?.*?}}/g;
         let slug = slugRegex.exec(mustache)[1];
+        console.log(slug)
 
         // Skip if we've already saved this slug
         if( placeholders.filter( function(val){ return val.slug == slug; } ).length ){
@@ -48,7 +49,7 @@ module.exports = template => {
 
             // Make sure type matches default
             placeholder.type = defaultValue.type
-            
+
         }
     })
 
