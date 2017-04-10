@@ -12,7 +12,6 @@ module.exports = template => {
         // Save the slug of the element
         let slugRegex = /{{\s?(\S*)\s?.*?}}/g;
         let slug = slugRegex.exec(mustache)[1];
-        console.log(slug)
 
         // Skip if we've already saved this slug
         if( placeholders.filter( function(val){ return val.slug == slug; } ).length ){
