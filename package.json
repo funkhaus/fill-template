@@ -1,5 +1,5 @@
 {
-  "name": "funkhaus-format-login",
+  "name": "fill-template",
   "version": "2.0.0",
   "description": "",
   "main": "index.js",
@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "funkhaus-format-login": "./index.js"
+    "fill-template": "./index.js"
   },
   "keywords": [],
   "author": "",

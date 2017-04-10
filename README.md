@@ -1,9 +1,9 @@
 Quickly generate WP login CSS files for Funkhaus projects.
 
 ## How
-1. `sudo npm install funkhaus-format-login -g`
+1. `sudo npm install fill-template -g`
 1. Open Terminal and move to the desired directory
-1. `funkhaus-format-login` and follow instructions
+1. `fill-template` and follow instructions
 
 That's it!
 
@@ -17,7 +17,7 @@ That's it!
     * Name of output file (default `output.txt`)
 
 ## Changing the Template
-Everything that happens in the script is based on the template file. `funkhaus-format-login` scans the template (default `templates/template.css`) for [Mustache-style](https://mustache.github.io/) placeholders, then prompts the user for values to fill those placeholders.
+Everything that happens in the script is based on the template file. `fill-template` scans the template (default `templates/template.css`) for [Mustache-style](https://mustache.github.io/) placeholders, then prompts the user for values to fill those placeholders.
 
 For example, if `template.css` just contained this:
 
@@ -27,7 +27,7 @@ html {
 }
 ```
 
-then running `funkhaus-format-login` would ask you for the `background-color`:
+then running `fill-template` would ask you for the `background-color`:
 
 ```
 prompt: background-color (required): [your hex value here]
