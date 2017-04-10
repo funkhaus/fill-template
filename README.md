@@ -54,6 +54,10 @@ body {
 
 Name the placeholder as usual, then indicate a default value to look for with `default:[default-value-name]`. This falls back on the default value if the user doesn't specify the value in the prompt.
 
+## TODO
+* Type validation and formatting
+* Validate and format replacement values based on default's type and value
+
 -------
 
 Version 1.0
