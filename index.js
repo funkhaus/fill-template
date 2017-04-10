@@ -25,10 +25,7 @@ let template = fs.readFileSync(program.template, { encoding: program.encoding })
 // Save required and optional placeholders
 let placeholders = getPlaceholders(template);
 
-console.log(placeholders)
-return
-
-// Prep prompt schema (see https://www.npmjs.com/package/prompt)
+// Prep prompt schema (see https://www.npmjs.com/package/prompt) based on placeholders
 prompt.start();
 let schema = setupSchema(placeholders);
 

@@ -6,20 +6,20 @@ module.exports = (prompt, schema, placeholders, template) => {
     return new Promise((resolve, reject) => {
         prompt.get( schema, function(err, results){
 
-            for( let placeholder in results ){
-                let placeholderObject = placeholders.filter(x => x.name == placeholder.name).pop();
+            Object.keys(results).forEach( result => {
+                let placeholderObject = placeholders.find( x => { return x.slug == result } )
 
-                let val = results[placeholder];
+                let val = results[result]
 
                 if( placeholderObject.type == 'hex' ){
-                    val = formatHex( results[placeholder] );
+                    val = formatHex( val );
                     if( val === null || !val.length ){
                         val = formatHex( results[placeholderObject.default] );
                     }
                 }
 
-                template = template.replace( new RegExp(placeholderObject.placeholder.template, 'g'), val );
-            }
+                template = template.replace( new RegExp(placeholderObject.getTemplate(), 'g'), val );
+            })
 
             resolve(template);
 

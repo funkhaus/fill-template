@@ -7,7 +7,7 @@ class Placeholder {
     }
 
     hasDefault(){
-        return typeof this.defaultValue === 'undefined'
+        return typeof this.defaultValue !== 'undefined'
     }
 
     getTemplate(){
