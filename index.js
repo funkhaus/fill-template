@@ -11,9 +11,9 @@ const program = require('commander');
 
 program
     .version('1.1.0')
-    .option('-t, --template [file]', 'Path to the desired template file', './templates/template.css')
+    .option('-t, --template [file]', 'Path to the desired template file', './template.txt')
     .option('-e, --encoding [encoding]', 'Template file encoding [utf8]', 'utf8')
-    .option('-o, --output [output]', 'Name of output file or output root directory', 'login.css')
+    .option('-o, --output [output]', 'Name of output file or output root directory', 'output.txt')
     .parse(process.argv);
 
 // Load template and scan for placeholders
@@ -38,5 +38,5 @@ runPrompt(prompt, schema, placeholders, template)
     .then(newFile => {
         // Write the file!
         fs.writeFileSync(program.output, newFile);
-        console.log('File created at login.css');
+        console.log('File created at ' + program.output);
     });

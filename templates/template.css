@@ -1,3 +1,142 @@
-{{ x type:hex }}
-{{ y default:x }}
-{{ required }}
+/*
+ * Style login page
+ * By Drew Baker & Funkhaus - 2011-2017
+ * funkhaus.us
+ *
+ */
+
+/*
+ * Import fonts
+ */
+    @import url("../fonts/fonts.css");
+
+
+/*
+ * Globals
+ */
+    html {
+    	background: {{ background }};
+    }
+
+    body.login {
+        font-size: 13px;
+        color: {{ font-color }};
+        background: {{ background }};
+    	line-height: 1.4;
+    	padding: 0;
+    	margin: 0;
+    	border: none;
+    	width: 100%;
+    }
+    a {
+    	outline: none;
+    }
+
+
+/*
+ * Login Banner Image
+ */
+    #login h1 a {
+    	background-image: url(../images/backend/login-banner.png);
+    	background-position: center;
+    	background-size: contain;
+    	margin: 0;
+    	width: auto;
+    }
+
+
+/*
+ * Login Form
+ */
+    .login form {
+        background-color: {{ background }};
+        color: {{ font-color }};
+
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+    .login label {
+        color: {{ label-font-color default:font-color }};
+    }
+    body.login input[type='text'],
+    body.login input[type='password'] {
+    	background: {{ input-background default:background }};
+    	border: 1px solid #cccccc;
+    	font-family: inherit;
+    }
+    body.login input[type="checkbox"],
+    body.login input[type="radio"] {
+        vertical-align: baseline;
+    }
+    #rememberme {
+	    border-radius: 5px;
+	    vertical-align: middle;
+    }
+    #rememberme[type=checkbox]:checked:before {
+	    color: {{ check-color default:font-color }};
+    }
+    #rememberme[type=checkbox]:focus {
+        /* checkbox outline color here */
+        -webkit-box-shadow: 0 0 2px rgba(30,140,190,.8);
+        box-shadow: 0 0 2px rgba(30,140,190,.8);
+    }
+
+
+
+/*
+ * Login Submit Button
+ */
+    #wp-submit {
+    	background: {{ button-background default:font-color }};
+    	border: none;
+    	text-shadow: none;
+    	box-shadow: 0 0 0 0;
+        color: {{ button-font-color default:background }};
+    }
+    #wp-submit:hover {
+        background: {{ button-hover-background default:background }};
+        color: {{ button-hover-font-color default:font-color }};
+    }
+
+
+/*
+ * "Lost password" dialog
+ */
+    .login #nav {
+    	text-shadow: none;
+    }
+    .login #nav a {
+    	text-decoration: none;
+    	color: {{ link-color default:font-color }} !important;
+    	padding: auto 1px auto 1px;
+    	text-shadow: none;
+    }
+    .login #nav a:hover {
+    	color: {{ link-hover-color default:font-color }} !important;
+    	font-weight: bold;
+    	text-shadow: none;
+    }
+    .login #login_error,
+    .login .message {
+        background-color: {{ message-background default:background }};
+        color: {{ message-font-color default:font-color }};
+
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+
+
+
+/*
+ * "Back to blog" link header
+ */
+    #backtoblog {
+    	display: none;
+    }
+
+/*
+ * Animations
+ */
+    #wp-submit {
+        transition: background-color 0.4s, color 0.4s;
+    }

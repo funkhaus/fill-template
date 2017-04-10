@@ -10,11 +10,11 @@ That's it!
 ## Options
 
 * `-t filename.txt` or `--template example.txt`
-    * File to use as a template (default `templates/template.css`)
+    * File to use as a template (default `template.txt`)
 * `-e encoding` or `--encoding encoding`
     * Encoding of the template (default utf8)
 * `-o example.txt` or `--output example.txt`
-    * Name of output file (default `login.css`)
+    * Name of output file (default `output.txt`)
 
 ## Changing the Template
 Everything that happens in the script is based on the template file. `funkhaus-format-login` scans the template (default `templates/template.css`) for [Mustache-style](https://mustache.github.io/) placeholders, then prompts the user for values to fill those placeholders.
@@ -27,7 +27,7 @@ html {
 }
 ```
 
-then running `format-login` would ask you for the `background-color`:
+then running `funkhaus-format-login` would ask you for the `background-color`:
 
 ```
 prompt: background-color (required): [your hex value here]
@@ -54,12 +54,8 @@ body {
 
 Name the placeholder as usual, then indicate a default value to look for with `default:[default-value-name]`. This falls back on the default value if the user doesn't specify the value in the prompt.
 
-## TODO
-* Type validation and formatting
-* Validate and format replacement values based on default's type and value
-
 -------
 
-Version 1.0
+Version 2.0
 
 http://funkhaus.us
