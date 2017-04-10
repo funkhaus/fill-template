@@ -11,6 +11,11 @@ module.exports = (prompt, schema, placeholders, template) => {
 
                 let val = results[result]
 
+                if( !val.length && placeholderObject.hasDefault() ){
+                    let key = placeholders.find( x => { return x.slug == placeholderObject.defaultValue } ).slug
+                    val = results[key]
+                }
+
                 if( placeholderObject.type == 'hex' ){
                     val = formatHex( val );
                     if( val === null || !val.length ){

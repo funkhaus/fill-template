@@ -3,7 +3,7 @@
 
 const prompt = require('prompt');
 const fs = require('fs');
-const getPlaceholders = require('./utils/getPlaceholders.js');
+const buildPlaceholders = require('./utils/buildPlaceholders.js');
 const setupSchema = require('./utils/setupSchema.js');
 const runPrompt = require('./utils/runPrompt.js');
 
@@ -23,7 +23,7 @@ let template = fs.readFileSync(program.template, { encoding: program.encoding })
 // into instances of the class Placeholder
 
 // Save required and optional placeholders
-let placeholders = getPlaceholders(template);
+let placeholders = buildPlaceholders(template);
 
 // Prep prompt schema (see https://www.npmjs.com/package/prompt) based on placeholders
 prompt.start();

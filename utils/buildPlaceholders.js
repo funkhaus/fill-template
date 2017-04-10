@@ -40,6 +40,18 @@ module.exports = template => {
         placeholders.push( new Placeholder(slug, defaultValue, type) );
     });
 
+    // Make sure placeholders with defaults have the correct types set
+    placeholders.forEach(placeholder => {
+        if( placeholder.hasDefault() ){
+
+            let defaultValue = placeholders.find(x => { return x.slug == placeholder.defaultValue })
+
+            // Make sure type matches default
+            placeholder.type = defaultValue.type
+            
+        }
+    })
+
     return placeholders;
 
 }

@@ -3,26 +3,37 @@ const types = require('./typeValidator');
 module.exports = placeholders => {
     let schema = { properties: {} }
 
-    placeholders.forEach( val => {
+    // Make sure required values are first
+    placeholders.sort( (a, b) => {
+        if( ! a.hasDefault() && b.hasDefault() ){
+            return -1
+        } else if( a.hasDefault() && !b.hasDefault() ){
+            return 1
+        } else {
+            return 0
+        }
+    })
+
+    placeholders.forEach( placeholder => {
 
         // Prep data to save to schema
         let properties = {};
 
         // Does this placeholder have a default value set? If not, mark as required
-        if( ! val.hasDefault() ){
+        if( ! placeholder.hasDefault() ){
             properties.required = true;
-            properties.description = val.slug + ' (required)';
+            properties.description = placeholder.slug + ' (required)';
         } else {
-            properties.description = val.slug + ' (default: ' + val.defaultValue + ')';
+            properties.description = placeholder.slug + ' (default: ' + placeholder.defaultValue + ')';
         }
 
         // Does this placeholder have a type set? If so, save validation
-        if( val.type ){
-            properties.message = val.slug + ' must be a ' + val.type + '!';
-            properties.pattern = types[val.type];
+        if( placeholder.type ){
+            properties.message = placeholder.slug + ' must be a ' + placeholder.type + '!';
+            properties.pattern = types[placeholder.type];
         }
 
-        schema.properties[val.slug] = properties;
+        schema.properties[placeholder.slug] = properties;
     })
 
     return schema;

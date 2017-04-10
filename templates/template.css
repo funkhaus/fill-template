@@ -1,2 +1,3 @@
 {{ x type:hex }}
 {{ y default:x }}
+{{ required }}
