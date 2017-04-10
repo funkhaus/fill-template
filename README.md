@@ -1,4 +1,4 @@
-Quickly generate WP login CSS files for Funkhaus projects.
+Fill out Mustache-style templates for any file quickly and easily.
 
 ## How
 1. `sudo npm install fill-template -g`
@@ -41,6 +41,8 @@ html {
 }
 ```
 
+### Defaults
+
 You can also specify a default value for a placeholder:
 
 ```css
@@ -54,8 +56,23 @@ body {
 
 Name the placeholder as usual, then indicate a default value to look for with `default:[default-value-name]`. This falls back on the default value if the user doesn't specify the value in the prompt.
 
+### Types
+
+You can specify types for placeholders:
+
+```css
+html {
+    color: {{ background type:hex }}
+}
+```
+
+Valid types are:
+* `string` (default)
+* `hex`
+* `number`
+
 -------
 
-Version 2.0
+Version 2.0.1
 
 http://funkhaus.us
